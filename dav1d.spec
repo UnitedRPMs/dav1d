@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global commit0 95cf7cf8f3c8b884483777e33adcc63ad7075327
+%global commit0 c3980e394d32ed832dfd65decde5f210c03b2f27
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 %global gver .git%{shortcommit0}
 
@@ -78,5 +78,5 @@ meson build --buildtype release --prefix=%{_prefix} --libdir=%{_libdir}
 
 %changelog
 
-* Wed Dec 05 2018 - David Va <davidva AT tuta DOT io> 0.0.1-7.git95cf7cf
+* Wed Dec 05 2018 - David Va <davidva AT tuta DOT io> 0.0.1-7.gitc3980e3
 - Initial build
