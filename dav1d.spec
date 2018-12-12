@@ -62,8 +62,7 @@ meson build --buildtype release --prefix=%{_prefix} --libdir=%{_libdir}
 %files  libs  
 %license COPYING
 %doc README.md
-%{_libdir}/libdav1d.so.0
-%{_libdir}/libdav1d.so.0.0.1
+%{_libdir}/libdav1d.so.*
 
 %files devel
 %license COPYING
