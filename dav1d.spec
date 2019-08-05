@@ -28,6 +28,7 @@ V1 cross-platform Decoder, focused on speed and correctness.
 
 %package        libs
 Summary:        Libraries for dav1d
+Provides:	libdav1d = %{version}
 
 %description    libs
 This package contains the libraries for dav1d
@@ -35,6 +36,7 @@ This package contains the libraries for dav1d
 %package        devel
 Summary:        Development package for dav1d
 Requires:       %{name}-libs = %{version}-%{release}
+Provides:	libdav1d-devel = %{version}
 
 %description    devel
 This package contains development files for dav1d
