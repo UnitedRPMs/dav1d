@@ -5,7 +5,7 @@
 
 Name:       dav1d
 Version:    0.3.1
-Release:    1%{?gver}%{dist}
+Release:    2%{?gver}%{dist}
 Summary:    dav1d is an AV1 decoder
 
 Group:      Applications/Multimedia
@@ -26,19 +26,18 @@ Requires: %{name}-libs = %{version}-%{release}
 %description 
 V1 cross-platform Decoder, focused on speed and correctness.
 
-%package        libs
+%package        -n libdav1d
 Summary:        Libraries for dav1d
-Provides:	libdav1d = %{version}
 
-%description    libs
+
+%description    -n libdav1d
 This package contains the libraries for dav1d
 
-%package        devel
+%package        -n libdav1d-devel
 Summary:        Development package for dav1d
 Requires:       %{name}-libs = %{version}-%{release}
-Provides:	libdav1d-devel = %{version}
 
-%description    devel
+%description    -n libdav1d-devel
 This package contains development files for dav1d
 
 %prep
@@ -61,12 +60,12 @@ meson build --buildtype release --prefix=%{_prefix} --libdir=%{_libdir}
 %doc README.md
 %{_bindir}/dav1d
 
-%files  libs  
+%files  -n libdav1d
 %license COPYING
 %doc README.md
 %{_libdir}/libdav1d.so.*
 
-%files devel
+%files -n libdav1d-devel
 %license COPYING
 %doc README.md
 %{_includedir}/dav1d/common.h
@@ -79,6 +78,9 @@ meson build --buildtype release --prefix=%{_prefix} --libdir=%{_libdir}
 %{_libdir}/pkgconfig/dav1d.pc
 
 %changelog
+
+* Wed Aug 06 2019 - David Va <davidva AT tuta DOT io> 0.3.1-2.gitc9427fd
+- Fix compatibility 
 
 * Sat Aug 03 2019 - David Va <davidva AT tuta DOT io> 0.3.1-1.gitc9427fd
 - Updated to 0.3.1
