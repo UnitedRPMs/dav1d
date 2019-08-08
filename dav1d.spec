@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global commit0 c9427fd43a17d654402f49f8ce28c4991c7024da
+%global commit0 5f63e531b9d10a09afe0a6b4875ca4852a7e58c1
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 %global gver .git%{shortcommit0}
 
 Name:       dav1d
-Version:    0.3.1
-Release:    3%{?gver}%{dist}
+Version:    0.4.0
+Release:    1%{?gver}%{dist}
 Summary:    dav1d is an AV1 decoder
 
 Group:      Applications/Multimedia
@@ -78,6 +78,9 @@ meson build --buildtype release --prefix=%{_prefix} --libdir=%{_libdir}
 %{_libdir}/pkgconfig/dav1d.pc
 
 %changelog
+
+* Thu Aug 08 2019 - David Va <davidva AT tuta DOT io> 0.4.0-1.git5f63e53
+- Updated to 0.4.0
 
 * Mon Aug 05 2019 - David Va <davidva AT tuta DOT io> 0.3.1-3.gitc9427fd
 - Fix compatibility 
