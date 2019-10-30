@@ -1,10 +1,10 @@
 %global debug_package %{nil}
-%global commit0 5f86e719ec4e24023e30cd61dc080be3ddba1a31
+%global commit0 bb160f09fa7ad132f4b6a014ac8e168b913ee3ab
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 %global gver .git%{shortcommit0}
 
 Name:       dav1d
-Version:    0.5.0
+Version:    0.5.1
 Release:    1%{?gver}%{dist}
 Summary:    dav1d is an AV1 decoder
 
@@ -78,6 +78,9 @@ meson build --buildtype release --prefix=%{_prefix} --libdir=%{_libdir}
 %{_libdir}/pkgconfig/dav1d.pc
 
 %changelog
+
+* Tue Oct 29 2019 - David Va <davidva AT tuta DOT io> 0.5.1-1.gitbb160f0
+- Updated to 0.5.1
 
 * Mon Oct 14 2019 - David Va <davidva AT tuta DOT io> 0.5.0-1.git5f86e71
 - Updated to 0.5.0
