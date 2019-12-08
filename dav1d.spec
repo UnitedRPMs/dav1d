@@ -1,11 +1,10 @@
-%global debug_package %{nil}
-%global commit0 bb160f09fa7ad132f4b6a014ac8e168b913ee3ab
+%global commit0 39667c751d427e447cbe8be783cfecd296659e24
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 %global gver .git%{shortcommit0}
 
 Name:       dav1d
-Version:    0.5.1
-Release:    1%{?gver}%{dist}
+Version:    0.5.2
+Release:    7%{?gver}%{dist}
 Summary:    dav1d is an AV1 decoder
 
 Group:      Applications/Multimedia
@@ -16,10 +15,8 @@ Source:     https://code.videolan.org/videolan/dav1d/-/archive/%{commit0}/%{name
 BuildRequires: gcc >= 5.1.1-2
 
 # Basic tools and libraries
-BuildRequires: ninja-build 
 BuildRequires: meson 
 BuildRequires: nasm 
-BuildRequires: git
 BuildRequires: doxygen
 Requires: libdav1d = %{version}-%{release}
 
@@ -45,15 +42,19 @@ This package contains development files for dav1d
 %autosetup -n %{name}-%{commit0}
 
 %build
-meson build --buildtype release --prefix=%{_prefix} --libdir=%{_libdir}
+%meson --buildtype=release
 
-%ninja_build -C build
+%meson_build
+%meson_build doc/html
 
 %install
-%ninja_install -C build
+%meson_install
 
 %check
-%ninja_test -C build
+%meson_test
+
+%clean
+rm -rf %{buildroot}
 
 %files
 %license COPYING
@@ -66,8 +67,8 @@ meson build --buildtype release --prefix=%{_prefix} --libdir=%{_libdir}
 %{_libdir}/libdav1d.so.*
 
 %files -n libdav1d-devel
-%license COPYING
-%doc README.md
+%license COPYING 
+%doc README.md %{_host_alias}/doc/html
 %{_includedir}/dav1d/common.h
 %{_includedir}/dav1d/data.h
 %{_includedir}/dav1d/dav1d.h
@@ -78,6 +79,9 @@ meson build --buildtype release --prefix=%{_prefix} --libdir=%{_libdir}
 %{_libdir}/pkgconfig/dav1d.pc
 
 %changelog
+
+* Fri Dec 06 2019 - David Va <davidva AT tuta DOT io> 0.5.2-7.git39667c7
+- Updated to 0.5.2
 
 * Tue Oct 29 2019 - David Va <davidva AT tuta DOT io> 0.5.1-1.gitbb160f0
 - Updated to 0.5.1
